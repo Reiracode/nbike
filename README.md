@@ -16,4 +16,4 @@
 - [leaflet](https://leafletjs.com/)，使用[OpenStreetMap](https://wiki.openstreetmap.org/wiki/Main_Page)圖資
 
 ## 連結
-https://krli07717.github.io/bikeland/
+https://reiracode.github.io/yourbike
