@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nbike/static/css/main.769a8738.chunk.css",
-    "main.js": "/nbike/static/js/main.1035a0ed.chunk.js",
-    "main.js.map": "/nbike/static/js/main.1035a0ed.chunk.js.map",
+    "main.js": "/nbike/static/js/main.5b196174.chunk.js",
+    "main.js.map": "/nbike/static/js/main.5b196174.chunk.js.map",
     "runtime-main.js": "/nbike/static/js/runtime-main.21531ad8.js",
     "runtime-main.js.map": "/nbike/static/js/runtime-main.21531ad8.js.map",
     "static/js/2.6d1e4024.chunk.js": "/nbike/static/js/2.6d1e4024.chunk.js",
@@ -35,6 +35,6 @@
     "static/js/runtime-main.21531ad8.js",
     "static/js/2.6d1e4024.chunk.js",
     "static/css/main.769a8738.chunk.css",
-    "static/js/main.1035a0ed.chunk.js"
+    "static/js/main.5b196174.chunk.js"
   ]
 }
