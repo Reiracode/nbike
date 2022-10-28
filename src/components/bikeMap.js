@@ -6,6 +6,7 @@ import parkingSvg from "../assets/icon-parking.svg";
 import parkingRedSvg from "../assets/icon-parking-red.svg";
 import parkingGreySvg from "../assets/icon-parking-grey.svg";
 import userPositionMobileSvg from "../assets/icon-user-position-mobile.svg";
+import geolocactionSvg from "../assets/icon-geolocation.svg";
 
 import { useEffect, useRef } from "react";
 import decideByAvailability from "../utils/decideByAvailability";
@@ -15,14 +16,29 @@ export default function BikeMap({
   userPosition,
   bikesAvailable,
   isFindingBikes,
-
+  isLocatingUser,
+  handleLocateUser
 }) {
+
+  console.log(userPosition)
+  // const userPosition = [25.0223242, 121.4995082];
   const bikeMapRef = useRef(null);
   const userPositionMarkerRef = useRef(null);
   const bikeMarkersRef = useRef([]);
 
+  const getLocationButton = (
+    <button
+      className="geolocation"
+      disabled={isLocatingUser ? true : false}
+      onClick={handleLocateUser}
+    >
+      <img src={geolocactionSvg} alt="geo location icon" />
+    </button>
+  );
   //   create map
   useEffect(() => {
+    if (!userPosition) return;
+
     if (bikeMapRef.current) return;
     bikeMapRef.current = L.map("bike_map", {
       attributionControl: false,
@@ -36,9 +52,12 @@ export default function BikeMap({
         }),
       ],
     });
-  }, []);
 
-  //  setView
+  }, [userPosition]);
+  
+
+
+  // //  setView
   useEffect(() => {
     if (!bikeMapRef.current) return; //no map
 
@@ -83,21 +102,21 @@ export default function BikeMap({
       // }
       // assign created DivIcon to bikesRef
 
-// .bikeMarker.twofull {
-// .bikeMarker.twohalf {
+      // .bikeMarker.twofull {
+      // .bikeMarker.twohalf {
       if (bikeversion == "Y") {
-          bikeMarkerStatusStyle_bikes ="twofull"
-          bikeMarkerStatusStyle_parks = "twohalf "
+        bikeMarkerStatusStyle_bikes = "twofull"
+        bikeMarkerStatusStyle_parks = "twohalf "
       } else {
         //for rent
-         bikeMarkerStatusStyle_bikes = decideByAvailability({
+        bikeMarkerStatusStyle_bikes = decideByAvailability({
           source: station.availableRentBikes,
           resultNone: "none",
           resultFew: "few",
           resultNormal: "",
         });
         // for back
-         bikeMarkerStatusStyle_parks = decideByAvailability({
+        bikeMarkerStatusStyle_parks = decideByAvailability({
           source: station.availableReturnBikes,
           resultNone: "none",
           resultFew: "few",
@@ -146,9 +165,9 @@ export default function BikeMap({
                 : station.availableReturnBikes
               }</span>`,
             className: `bikeMarker ${isFindingBikes
-                ? bikeMarkerStatusStyle_bikes
-                : bikeMarkerStatusStyle_parks
-              }`, 
+              ? bikeMarkerStatusStyle_bikes
+              : bikeMarkerStatusStyle_parks
+              }`,
           }),
         }
       );
@@ -190,5 +209,6 @@ export default function BikeMap({
     };
   }, []);
 
-  return <div id="bike_map"></div>;
+  // return <div id="bike_map"></div>;
+  return userPosition ? <div id="bike_map">   {getLocationButton}</div> : null;
 }

@@ -247,8 +247,9 @@ input[name="find_type"]:checked ~ button.find_type {
 
 button.geolocation {
   position: absolute;
-  top: -60px;
-  right: 20px;
+  z-index: 9999;
+  top: 0px;
+  right: 0px;
   width: 40px;
   height: 40px;
   background-color: var(--primary-400);

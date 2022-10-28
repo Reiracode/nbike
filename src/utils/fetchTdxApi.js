@@ -49,7 +49,9 @@ export async function getAvailableBikes(userPosition) {
       };
       result.push(stationStatus);
     }
+    console.log(result) ;
     return result;
+
 
   } catch (error) {
     throw error;
@@ -59,9 +61,9 @@ export async function getAvailableBikes(userPosition) {
 export default async function fetchTdxApi(url) {
   const tokenCode = await getToken();
   try {
-    // const response = await fetch(url, { headers: { authorization: `Bearer ${tokenCode.access_token}` } });
+    const response = await fetch(url, { headers: { authorization: `Bearer ${tokenCode.access_token}` } });
     
-    const response = await fetch(url);
+    // const response = await fetch(url);
     const data = await response.json();
     return data;
   } catch (error) {
