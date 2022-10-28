@@ -12,7 +12,7 @@ export async function getAvailableBikes(userPosition) {
     // const stationUrl = `https://tdx.transportdata.tw/api/basic/v2/Bike/Station/City/Taipei?&%24format=JSON`;
     // const bikeUrl = `https://tdx.transportdata.tw/api/basic/v2/Bike/Availability/City/Taipei?%24format=JSON`;
 
-    const stationUrl = `https://tdx.transportdata.tw/api/basic/v2/Bike/Station/City/Taipei?%24top=30&%24spatialFilter=nearby(25.0223265,121.499511,1000)&%24format=JSON`;
+    const stationUrl = `https://tdx.transportdata.tw/api/basic/v2/Bike/Station/City/Taipei?%24top=30&%24spatialFilter=nearby(${lat},${lng},1000)&%24format=JSON`;
     const bikeUrl = `https://tdx.transportdata.tw/api/basic/v2/Bike/Availability/City/Taipei?%24format=JSON`;
 
     // const stationUrl = `https://tdx.transportdata.tw/api/advanced/v2/Bike/Station/NearBy?%24top=30&%24spatialFilter=nearby(${lat},${lng},1000)&%24format=JSON`;

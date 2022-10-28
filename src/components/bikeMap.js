@@ -96,7 +96,9 @@ export default function BikeMap({
     let bikeMarkerStatusStyle_bikes, bikeMarkerStatusStyle_parks;
     bikesAvailable.forEach((station, index) => {
       const bikeversion = station.stationName.includes("2.0") ? "Y" : "N"
-      console.log(station.stationName + "--" + bikeversion)
+      // console.log(station.stationName + "--" + bikeversion)
+
+
       // if (station.stationName.includes("2.0")) {
       //   console.log(station)
       // }

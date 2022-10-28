@@ -34,6 +34,9 @@ function Main() {
       throw error;
     }
   }
+
+
+ 
   
   //取得youPostion(1)getAvailableBikes(userCoordinates)
   //(2) BikeMap <BikeMap userPosition = { userPosition }
@@ -122,6 +125,8 @@ function Main() {
 
   const getPosition = useCallback(async () => {
     const data = await asyncGetGeolocation();
+    alert("位子" + data)
+
     setUserPosition(data);
 
     const bikes = await getAvailableBikes(data);
@@ -169,7 +174,7 @@ function Main() {
             userPosition={userPosition}
             bikesAvailable={bikesAvailable}
             isFindingBikes={isFindingBikes}
-            handleLocateUser={handleLocateUser}
+            handleLocateUser={getPosition}
             isLocatingUser={isLocatingUser}
        
           />
