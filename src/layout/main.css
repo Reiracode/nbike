@@ -71,13 +71,17 @@ main {
   background: url("../assets/icon-bike-marker-grey.svg") no-repeat;
 }
 /* 1.0 */
+ 
+
 .bikeMarker .bikeMarker_number {
   margin-bottom: 10px;
-  color:#ebb7ff;
+  color:#f358f6;
 }
 /* 2.0 */
 .bikeMarker.plus .bikeMarker_number {
-  color: #c02cf9;
+  color:#00cefb;
+  /*  
+  text-shadow: 1px 1px #0d9bac; */
 }
 
  .bikeMarker.none .bikeMarker_number {
