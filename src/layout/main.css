@@ -23,7 +23,8 @@ main {
   z-index: 999;
 }
 
-.bikemap_info .find_type_wrapper {
+/* .bikemap_info .find_type_wrapper { */
+  .find_type_wrapper {
   position: absolute;
   display: flex;
   gap: 4px;
@@ -36,6 +37,7 @@ main {
   width: 200px;
   height: 36px;
   box-shadow: 4px 4px 20px 0px #7676764d;
+  z-index: 9999;
 }
 
 @media (min-width: 1200px) {
@@ -55,41 +57,34 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 38px !important;
-  height: 51px !important;
+  width: 41px !important;
+  height: 47px !important;
   background: url("../assets/icon-bike-marker-green.svg") no-repeat;
  
 }
 
 .bikeMarker.few {
   background: url("../assets/icon-bike-marker-red.svg") no-repeat;
-/* background: url("../assets/icon-2-pink.svg")  no-repeat; */
-}
-
-/* 2.0 marker */
-.bikeMarker.twofull {
-  background: url("../assets/icon-2-marker.svg") no-repeat;
-}
-.bikeMarker.twohalf {
-  background: url("../assets/icon-2-park.svg") no-repeat;
 }
 
 .bikeMarker.none {
   background: url("../assets/icon-bike-marker-grey.svg") no-repeat;
 }
-
+/* 1.0 */
 .bikeMarker .bikeMarker_number {
-  margin-bottom: 14px;
-  color: var(--primary-400);
+  margin-bottom: 10px;
+  color:#ebb7ff;
+}
+/* 2.0 */
+.bikeMarker.plus .bikeMarker_number {
+  color: #c02cf9;
 }
 
-.bikeMarker .bikeMarker_number.few {
-  color: var(--alert-400);
+ .bikeMarker.none .bikeMarker_number {
+  color:gray;
 }
 
-.bikeMarker .bikeMarker_number.few {
-  color: var(--grey-400);
-}
+ 
 
 @media (min-width: 1200px) {
   .bikeMarker {
@@ -128,6 +123,8 @@ main {
   color: var(--primary-500);
 }
 
+
+/* popup  style */
 .popup_bikes,
 .popup_parks {
   display: flex;

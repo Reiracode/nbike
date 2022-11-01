@@ -1,12 +1,13 @@
-
-import bicycle500Svg from "../assets/icon-bicycle-500.svg";
-import bicycleRedSvg from "../assets/icon-bicycle-red.svg";
 import bicycleGreySvg from "../assets/icon-bicycle-grey.svg";
 import parkingSvg from "../assets/icon-parking.svg";
-import parkingRedSvg from "../assets/icon-parking-red.svg";
+
 import parkingGreySvg from "../assets/icon-parking-grey.svg";
 import userPositionMobileSvg from "../assets/icon-user-position-mobile.svg";
 import geolocactionSvg from "../assets/icon-geolocation.svg";
+
+import bicycle400Svg from "../assets/icon-bicycle-400.svg";
+import bicycleWhiteSvg from "../assets/icon-bicycle-white.svg";
+import parkingWhiteSvg from "../assets/icon-parking-white.svg";
 
 import { useEffect, useRef } from "react";
 import decideByAvailability from "../utils/decideByAvailability";
@@ -17,29 +18,28 @@ export default function BikeMap({
   bikesAvailable,
   isFindingBikes,
   isLocatingUser,
-  handleLocateUser
+  handleLocateUser,
+  handleFindingType,
 }) {
-
   console.log(userPosition)
-  // const userPosition = [25.0223242, 121.4995082];
+
   const bikeMapRef = useRef(null);
   const userPositionMarkerRef = useRef(null);
   const bikeMarkersRef = useRef([]);
 
+  //重新定位button
   const getLocationButton = (
     <button
       className="geolocation"
       disabled={isLocatingUser ? true : false}
-      onClick={handleLocateUser}
-    >
+      onClick={handleLocateUser}>
       <img src={geolocactionSvg} alt="geo location icon" />
     </button>
   );
+
   //   create map
   useEffect(() => {
-    if (!userPosition) return;
-
-    if (bikeMapRef.current) return;
+    // if (bikeMapRef.current) return;
     bikeMapRef.current = L.map("bike_map", {
       attributionControl: false,
       zoomControl: false,
@@ -52,25 +52,23 @@ export default function BikeMap({
         }),
       ],
     });
-
   }, [userPosition]);
-  
 
 
-  // //  setView
+
+  //  setView
   useEffect(() => {
     if (!bikeMapRef.current) return; //no map
 
     // remove current user marker
     if (userPositionMarkerRef.current)
       bikeMapRef.current.removeLayer(userPositionMarkerRef.current);
-
     bikeMapRef.current.setView(userPosition, 15);
 
-    // create icon
+    // create your position icon
     const userPositionIcon = L.icon({
       iconUrl: userPositionMobileSvg,
-      iconSize: [56, 56],
+      iconSize: [36, 36]
     });
 
     // create marker
@@ -81,6 +79,8 @@ export default function BikeMap({
     // add marker
     userPositionMarkerRef.current.addTo(bikeMapRef.current);
   }, [userPosition]);
+
+
 
   //setting bikeMarkers
   useEffect(() => {
@@ -94,82 +94,42 @@ export default function BikeMap({
 
     bikeMarkersRef.current = [];
     let bikeMarkerStatusStyle_bikes, bikeMarkerStatusStyle_parks;
+
     bikesAvailable.forEach((station, index) => {
-      const bikeversion = station.stationName.includes("2.0") ? "Y" : "N"
-      // console.log(station.stationName + "--" + bikeversion)
+      const bikeversion = station.stationName.includes("2.0") ? "plus" : ""
+ 
+      //bikes ==  for rent
+      //  none/few/""
+      //L.marker resultNormal 
+      // bikeMarkerStatusStyle_bikes = decideByAvailability(station.availableRentBikes);
+      bikeMarkerStatusStyle_bikes = decideByAvailability(station.availableRentBikes) +" "+ bikeversion ;
 
+      console.log(bikeMarkerStatusStyle_bikes)
 
-      // if (station.stationName.includes("2.0")) {
-      //   console.log(station)
+      //parks ==  for back
+      bikeMarkerStatusStyle_parks = decideByAvailability(station.availableReturnBikes);
+
       // }
-      // assign created DivIcon to bikesRef
+      // popup  none/few/" "
+      const availableBikesStyle = decideByAvailability(station.availableRentBikes);
+      const availableParksStyle = decideByAvailability(station.availableReturnBikes);
+      const availableBikesImg = `<img src=${bicycleGreySvg} alt="bicycle icon" />`;
+      const availableParksImg = `<img src=${parkingGreySvg} alt="parking icon" />`
 
-      // .bikeMarker.twofull {
-      // .bikeMarker.twohalf {
-      if (bikeversion == "Y") {
-        bikeMarkerStatusStyle_bikes = "twofull"
-        bikeMarkerStatusStyle_parks = "twohalf "
-      } else {
-        //for rent
-        bikeMarkerStatusStyle_bikes = decideByAvailability({
-          source: station.availableRentBikes,
-          resultNone: "none",
-          resultFew: "few",
-          resultNormal: "",
-        });
-        // for back
-        bikeMarkerStatusStyle_parks = decideByAvailability({
-          source: station.availableReturnBikes,
-          resultNone: "none",
-          resultFew: "few",
-          resultNormal: "",
-        });
-      }
-
-
-
-
-      const availableBikesStyle = decideByAvailability({
-        source: station.availableRentBikes,
-        resultNone: "none",
-        resultFew: "few",
-        resultNormal: "",
-      });
-
-      const availableParksStyle = decideByAvailability({
-        source: station.availableReturnBikes,
-        resultNone: "none",
-        resultFew: "few",
-        resultNormal: "",
-      });
-
-      const availableBikesImg = decideByAvailability({
-        source: station.availableRentBikes,
-        resultNone: `<img src=${bicycleGreySvg} alt="bicycle icon" />`,
-        resultFew: `<img src=${bicycleRedSvg} alt="bicycle icon" />`,
-        resultNormal: `<img src=${bicycle500Svg} alt="bicycle icon" />`,
-      });
-
-      const availableParksImg = decideByAvailability({
-        source: station.availableReturnBikes,
-        resultNone: `<img src=${parkingGreySvg} alt="parking icon" />`,
-        resultFew: `<img src=${parkingRedSvg} alt="parking icon" />`,
-        resultNormal: `<img src=${parkingSvg} alt="parking icon" />`,
-      });
-
+      //L marker的資料
       bikeMarkersRef.current[index] = L.marker(
         [station.stationPosition.lat, station.stationPosition.lng],
         {
           icon: L.divIcon({
-            html: `<span class="bikeMarker_number typography-bold typography-button">
-            ${isFindingBikes
-                ? station.availableRentBikes
-                : station.availableReturnBikes
-              }</span>`,
             className: `bikeMarker ${isFindingBikes
               ? bikeMarkerStatusStyle_bikes
               : bikeMarkerStatusStyle_parks
               }`,
+            html: `<span class="bikeMarker_number typography-bold typography-button">
+            ${isFindingBikes
+                ? station.availableRentBikes
+                : station.availableReturnBikes
+              }</span>`
           }),
         }
       );
@@ -212,5 +172,57 @@ export default function BikeMap({
   }, []);
 
   // return <div id="bike_map"></div>;
-  return userPosition ? <div id="bike_map">   {getLocationButton}</div> : null;
+  return userPosition ? <div id="bike_map">
+    <div className="find_type_wrapper">
+      <label htmlFor="find_bikes">
+        <input
+          type="radio"
+          name="find_type"
+          id="find_bikes"
+          checked={isFindingBikes}
+          onChange={() => {
+            return;
+          }}
+          hidden
+        />
+        <button
+          className="find_type typography-bold typography-button"
+          onClick={handleFindingType}
+        >
+          <div className="find_type_img">
+            {isFindingBikes ? (
+              <img src={bicycleWhiteSvg} alt="bicycle white icon" />
+            ) : (
+              <img src={bicycle400Svg} alt="bicycle white icon" />
+            )}
+          </div>
+          找單車
+        </button>
+      </label>
+      <label htmlFor="find_parks">
+        <input
+          type="radio"
+          name="find_type"
+          id="find_parks"
+          checked={!isFindingBikes}
+          onChange={() => {
+            return;
+          }}
+          hidden
+        />
+        <button
+          className="find_type typography-bold typography-button"
+          onClick={handleFindingType}
+        >
+          <div className="find_type_img">
+            {isFindingBikes ? (
+              <img src={parkingSvg} alt="parking icon" />
+            ) : (
+              <img src={parkingWhiteSvg} alt="parking icon" />
+            )}
+          </div>
+          找車位
+        </button>
+      </label>
+    </div>  {getLocationButton}</div> : null;
 }

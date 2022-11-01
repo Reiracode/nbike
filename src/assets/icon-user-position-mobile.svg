@@ -1,20 +1,13 @@
-<svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle opacity="0.2" cx="30" cy="30" r="28" fill="#DE994A"/>
-<circle opacity="0.2" cx="29.9999" cy="29.9999" r="19.7867" fill="#DE994A"/>
-<g filter="url(#filter0_d_100_17814)">
-<circle cx="30" cy="30" r="10.08" fill="#DE994A"/>
-<circle cx="30" cy="30" r="11.58" stroke="white" stroke-width="3"/>
-</g>
-<defs>
-<filter id="filter0_d_100_17814" x="0.920044" y="0.920044" width="66.16" height="66.16" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="4" dy="4"/>
-<feGaussianBlur stdDeviation="10"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.4625 0 0 0 0 0.4625 0 0 0 0 0.4625 0 0 0 0.3 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_100_17814"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_100_17814" result="shape"/>
-</filter>
-</defs>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" stroke-miterlimit="2" stroke-linejoin="round" fill-rule="evenodd" clip-rule="evenodd">
+
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_3" height="0" width="0.0625" y="18.34363" x="17.43748" fill="#ff7f00"/>
+  <ellipse ry="0.03125" id="svg_4" cy="9.93742" cx="10.50001" fill="#ffffff"/>
+  <ellipse id="svg_7" cy="7.15618" cx="7.75002" fill="#ffffff"/>
+  <ellipse ry="0.03125" id="svg_9" cy="6.43743" cx="7.50002" fill="#ffffff"/>
+  <ellipse stroke="null" ry="8.31247" rx="7.96872" id="svg_13" cy="12" cx="12" fill="#ffffff"/>
+  <ellipse id="svg_17" cy="4.34369" cx="5.75002" fill="#8CD79F"/>
+  <path fill="#fe2dfe" id="svg_1" fill-rule="nonzero" d="m11.9995,2.0025c5.518,0 9.998,4.48 9.998,9.998c0,5.517 -4.48,9.997 -9.998,9.997c-5.517,0 -9.997,-4.48 -9.997,-9.997c0,-5.518 4.48,-9.998 9.997,-9.998zm4.047,7.107c-0.235,0 -1.893,0.576 -4.044,0.576c-2.167,0 -3.792,-0.576 -4.045,-0.576c-0.378,0 -0.687,0.308 -0.687,0.687c0,0.318 0.225,0.599 0.531,0.669c0.613,0.16 1.262,0.293 1.757,0.542c0.459,0.231 0.78,0.566 0.78,1.14c0,2.027 -1.325,3.92 -1.859,4.817c-0.001,0 -0.001,0 -0.001,0.001c-0.061,0.105 -0.092,0.224 -0.092,0.344c0,0.379 0.308,0.687 0.687,0.687c0.184,0 0.358,-0.072 0.488,-0.204c0.447,-0.449 1.334,-1.784 1.739,-2.429c0.2,-0.319 0.395,-0.621 0.705,-0.622c0.302,0.001 0.498,0.303 0.699,0.622c0.405,0.645 1.29,1.98 1.737,2.429c0.13,0.132 0.304,0.204 0.489,0.204c0.379,0 0.687,-0.308 0.687,-0.687c0,-0.119 -0.031,-0.237 -0.098,-0.353c0,-0.001 0,-0.001 -0.001,-0.002c-0.546,-0.919 -1.853,-2.778 -1.853,-4.807c0,-0.609 0.368,-0.956 0.851,-1.186c0.519,-0.247 1.167,-0.362 1.681,-0.495c0.31,-0.071 0.536,-0.352 0.536,-0.67c0,-0.379 -0.309,-0.687 -0.687,-0.687zm-4.031,-3.113c-0.875,0 -1.586,0.713 -1.586,1.593c0,0.879 0.711,1.592 1.586,1.592c0.876,0 1.586,-0.713 1.586,-1.592c0,-0.88 -0.71,-1.593 -1.586,-1.593z"/>
+ </g>
 </svg>
