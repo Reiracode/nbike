@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/nbike/static/css/main.11830c3c.chunk.css",
+    "main.css": "/nbike/static/css/main.415e997b.chunk.css",
     "main.js": "/nbike/static/js/main.3e10a735.chunk.js",
     "main.js.map": "/nbike/static/js/main.3e10a735.chunk.js.map",
     "runtime-main.js": "/nbike/static/js/runtime-main.21531ad8.js",
@@ -8,7 +8,7 @@
     "static/js/2.5fd3dda5.chunk.js": "/nbike/static/js/2.5fd3dda5.chunk.js",
     "static/js/2.5fd3dda5.chunk.js.map": "/nbike/static/js/2.5fd3dda5.chunk.js.map",
     "index.html": "/nbike/index.html",
-    "static/css/main.11830c3c.chunk.css.map": "/nbike/static/css/main.11830c3c.chunk.css.map",
+    "static/css/main.415e997b.chunk.css.map": "/nbike/static/css/main.415e997b.chunk.css.map",
     "static/js/2.5fd3dda5.chunk.js.LICENSE.txt": "/nbike/static/js/2.5fd3dda5.chunk.js.LICENSE.txt",
     "static/media/icon-bicycle-400.b9d2a608.svg": "/nbike/static/media/icon-bicycle-400.b9d2a608.svg",
     "static/media/icon-bicycle-500.9f48f63e.svg": "/nbike/static/media/icon-bicycle-500.9f48f63e.svg",
@@ -34,7 +34,7 @@
   "entrypoints": [
     "static/js/runtime-main.21531ad8.js",
     "static/js/2.5fd3dda5.chunk.js",
-    "static/css/main.11830c3c.chunk.css",
+    "static/css/main.415e997b.chunk.css",
     "static/js/main.3e10a735.chunk.js"
   ]
 }
