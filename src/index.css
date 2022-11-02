@@ -35,22 +35,23 @@ button {
   /* colors */
   --primary-600: #292e19;
   --primary-500: #474f2c;
-  --primary-400: #738047;
-  --primary-300: #a4b375;
+  --primary-400: #dcb4e4;
+  --primary-300: #e6d5f2;
   --primary-200: #cbd3b0;
-  --primary-100: #dfe4ce;
-  --accent-600: #a3651e;
+  --primary-100: #f2e9f8;
+  /* --accent-600: #a3651e;
   --accent-500: #c67a24;
   --accent-400: #de994a;
   --accent-300: #eabd8a;
-  --accent-200: #f5dfc6;
-  --accent-100: #faf0e5;
-  --alert-600: #8c3046;
+  --accent-200: ##d7edef;
+  --accent-100: #faf0e5; */
+  --alert-600: #7b92a7;
   --alert-500: #bc3253;
   --alert-400: #e75578;
   --alert-300: #f27594;
-  --alert-200: #f1b2c1;
+  --alert-200: #d7edef;
   --alert-100: #f7d4dd;
+  
   --grey-600: #464646;
   --grey-500: #767676;
   --grey-400: #9a9a9a;

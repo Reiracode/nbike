@@ -13,7 +13,7 @@ function Logo() {
       <a
         target="_blank"
         rel="noreferrer"
-        href="https://github.com/krli07717/bikeland"
+        href="https://reiracode.github.io/nbike/  "
       >
         <img src={logoSvg} alt="Bikeland" />
       </a>

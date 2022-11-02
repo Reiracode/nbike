@@ -103,16 +103,12 @@ export default function BikeMap({
       //L.marker resultNormal 
       // bikeMarkerStatusStyle_bikes = decideByAvailability(station.availableRentBikes);
       bikeMarkerStatusStyle_bikes = decideByAvailability(station.availableRentBikes) +" "+ bikeversion ;
-
-      console.log(bikeMarkerStatusStyle_bikes)
-
-      //parks ==  for back
-      bikeMarkerStatusStyle_parks = decideByAvailability(station.availableReturnBikes);
+      bikeMarkerStatusStyle_parks = decideByAvailability(station.availableReturnBikes) + " " + bikeversion;
 
       // }
       // popup  none/few/" "
-      const availableBikesStyle = decideByAvailability(station.availableRentBikes);
-      const availableParksStyle = decideByAvailability(station.availableReturnBikes);
+      const availableBikesStyle = decideByAvailability(station.availableRentBikes) + " " + bikeversion;
+      const availableParksStyle = decideByAvailability(station.availableReturnBikes) + " " + bikeversion;
       const availableBikesImg = `<img src=${bicycleGreySvg} alt="bicycle icon" />`;
       const availableParksImg = `<img src=${parkingGreySvg} alt="parking icon" />`
 

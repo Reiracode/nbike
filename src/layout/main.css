@@ -1,19 +1,20 @@
 #bike_map {
-  height: calc(100vh - 36px); /* navbar !expand = 36px*/
+  height: calc(100vh - 36px);
+  /* navbar !expand = 36px*/
 }
 
 main {
   position: relative;
 }
 
-.overlay{
-    position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 999;
-      background-color: #ffc0cb94;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background-color: #ffc0cb94;
 }
 
 .bikemap_info {
@@ -24,7 +25,7 @@ main {
 }
 
 /* .bikemap_info .find_type_wrapper { */
-  .find_type_wrapper {
+.find_type_wrapper {
   position: absolute;
   display: flex;
   gap: 4px;
@@ -34,7 +35,7 @@ main {
   padding: 4px 6px;
   border-radius: 20px;
   background-color: var(--grey-100);
-  width: 200px;
+  /* width: 200px; */
   height: 36px;
   box-shadow: 4px 4px 20px 0px #7676764d;
   z-index: 9999;
@@ -48,7 +49,7 @@ main {
     padding: 8px 12px;
   }
 
-  .find_type_wrapper > label {
+  .find_type_wrapper>label {
     flex: 1;
   }
 }
@@ -59,36 +60,41 @@ main {
   align-items: center;
   width: 41px !important;
   height: 47px !important;
-  background: url("../assets/icon-bike-marker-green.svg") no-repeat;
- 
+  background: url("../assets/icon-bike-marker-purple.svg") no-repeat;
+
 }
 
 .bikeMarker.few {
-  background: url("../assets/icon-bike-marker-red.svg") no-repeat;
+  background: url("../assets/icon-bike-marker-blue.svg") no-repeat;
 }
 
 .bikeMarker.none {
   background: url("../assets/icon-bike-marker-grey.svg") no-repeat;
 }
-/* 1.0 */
- 
 
+/* 1.0 */
 .bikeMarker .bikeMarker_number {
   margin-bottom: 10px;
-  color:#f358f6;
+  color: #fe2dfe;
+  color:#fb61fb;
+  /* color: #da7aff; */
 }
+
 /* 2.0 */
 .bikeMarker.plus .bikeMarker_number {
-  color:#00cefb;
+  color: #2196f3;
+  color:#00cae1;
+ 
+  /* color: #ffa000; */
   /*  
   text-shadow: 1px 1px #0d9bac; */
 }
 
- .bikeMarker.none .bikeMarker_number {
-  color:gray;
+.bikeMarker.none .bikeMarker_number {
+  color: gray;
 }
 
- 
+
 
 @media (min-width: 1200px) {
   .bikeMarker {
@@ -141,9 +147,15 @@ main {
   color: var(--primary-500);
 }
 
+/* 2.0字 */
+/* .popup_bikes.plus,.popup_parks.plus {
+  background-color:var(--alert-100);
+  color: #fff;
+} */
+
 .popup_bikes.few,
 .popup_parks.few {
-  background-color: var(--alert-100);
+  background-color: var(--alert-200);
   color: var(--alert-600);
 }
 
@@ -201,7 +213,7 @@ main {
   }
 }
 
-input[name="find_type"]:checked ~ button.find_type {
+input[name="find_type"]:checked~button.find_type {
   background-color: var(--primary-400);
   color: var(--grey-100);
 }
@@ -264,6 +276,7 @@ button.geolocation {
     background-color: var(--primary-600);
     outline: 2px dashed var(--alert-300);
   }
+
   to {
     background-color: var(--primary-400);
     outline: 2px dashed var(--alert-300);
@@ -278,6 +291,7 @@ button.geolocation {
     width: 60px;
     height: 60px;
   }
+
   button.geolocation img {
     width: 30px;
     height: 30px;
@@ -366,8 +380,7 @@ button.geolocation:disabled {
 }
 
 .filter input[type="search"]:placeholder-shown {
-  background: url("../assets/icon-search.svg") no-repeat calc(100% - 16px)
-    center;
+  background: url("../assets/icon-search.svg") no-repeat calc(100% - 16px) center;
   background-color: var(--grey-200);
 }
 
@@ -398,8 +411,7 @@ button.geolocation:disabled {
   }
 
   .filter input[type="search"]:placeholder-shown {
-    background: url("../assets/icon-search.svg") no-repeat calc(100% - 16px)
-      center;
+    background: url("../assets/icon-search.svg") no-repeat calc(100% - 16px) center;
     background-size: 20px 20px;
     background-color: var(--grey-200);
   }
@@ -422,7 +434,7 @@ button.geolocation:disabled {
   transition: max-height 0.3s ease-out;
 }
 
-.results > div {
+.results>div {
   animation: slideUp 0.3s linear;
 }
 
@@ -430,6 +442,7 @@ button.geolocation:disabled {
   from {
     transform: translateY(20px);
   }
+
   to {
     transform: translateY(0);
   }
@@ -440,6 +453,7 @@ button.geolocation:disabled {
 }
 
 @media (min-width: 1200px) {
+
   .results,
   .results_list.expand .results {
     max-height: 70vh;
@@ -517,7 +531,7 @@ button.geolocation:disabled {
   margin-top: 8px;
 }
 
-.bike_result .available > div {
+.bike_result .available>div {
   padding: 4px 20px;
   display: flex;
   flex: 1;
@@ -554,7 +568,7 @@ button.geolocation:disabled {
     margin-top: 12px;
   }
 
-  .bike_result .available > div {
+  .bike_result .available>div {
     padding: 8px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -573,12 +587,12 @@ button.geolocation:disabled {
   }
 }
 
-.bike_result + .bike_result {
+.bike_result+.bike_result {
   margin-top: 40px;
   position: relative;
 }
 
-.bike_result + .bike_result::before {
+.bike_result+.bike_result::before {
   content: "";
   position: absolute;
   top: -20px;

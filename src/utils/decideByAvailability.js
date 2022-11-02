@@ -5,7 +5,7 @@ export default function decideByAvailability(options) {
   // if (source === 0) return resultNone;
   // if (source <= 5) return resultFew;
 
-  if (options <=1) {
+  if (options === 0) {
     return "none";
   } else if (options <= 5) {
     return "few";
