@@ -31,8 +31,8 @@ header img {
 }
 
 .logo {
-  width: 106px;
-  height: 16px;
+  width: 100px;
+  height: 25px;
 }
 
 @media (min-width: 1200px) {

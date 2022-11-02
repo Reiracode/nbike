@@ -1,14 +1,19 @@
-import collapseTopSvg from "../assets/icon-collapse-top.svg";
-import collapseDownSvg from "../assets/icon-collapse-down.svg";
-import sortSvg from "../assets/icon-sort.svg";
-import bicycle400Svg from "../assets/icon-bicycle-400.svg";
+// import collapseTopSvg from "../assets/icon-collapse-top.svg";
+// import collapseDownSvg from "../assets/icon-collapse-down.svg";
+// import sortSvg from "../assets/icon-sort.svg";
+
 import geolocactionSvg from "../assets/icon-geolocation.svg";
+
+import bicycle400Svg from "../assets/icon-bicycle-400.svg";
 import bicycleWhiteSvg from "../assets/icon-bicycle-white.svg";
+
 import parkingSvg from "../assets/icon-parking.svg";
 import parkingWhiteSvg from "../assets/icon-parking-white.svg";
 
+import logoSvg from "../assets/logo-light.svg";
+
 import { useState } from "react";
-import BikeResults from "./bikeResults";
+ 
 
 export default function MapInfo({
   handleLocateUser,
@@ -17,31 +22,32 @@ export default function MapInfo({
   handleFindingType,
   isFindingBikes,
 }) {
-  const [expandResultList, setExpandResultList] = useState(false);
-  const [keyword, setKeyword] = useState("");
-  const [sortMethod, setSortMethod] = useState(0);
+  // const [expandResultList, setExpandResultList] = useState(false);
+  // const [keyword, setKeyword] = useState("");
+  // const [sortMethod, setSortMethod] = useState(0);
 
-  function handleSortResults() {
-    setSortMethod((state) => ++state % 4);
-  }
+  // function handleSortResults() {
+  //   setSortMethod((state) => ++state % 4);
+  // }
 
-  function handleExpandResultList() {
-    setExpandResultList((isExpanded) => !isExpanded);
-  }
+  // function handleExpandResultList() {
+  //   setExpandResultList((isExpanded) => !isExpanded);
+  // }
 
-  function handleSetKeyword(e) {
-    setKeyword(e.target.value);
-  }
+  // function handleSetKeyword(e) {
+  //   setKeyword(e.target.value);
+  // }
 
-  const collapseTip = (
-    <div className="collapse" onClick={handleExpandResultList}>
-      {expandResultList ? (
-        <img src={collapseDownSvg} alt="collapse down icon" />
-      ) : (
-        <img src={collapseTopSvg} alt="collapse top icon" />
-      )}
-    </div>
-  );
+  // const collapseTip = (
+  //   <div className="collapse" onClick={handleExpandResultList}>
+  //     {expandResultList ? (
+  //       <img src={collapseDownSvg} alt="collapse down icon" />
+  //     ) : (
+  //       <img src={collapseTopSvg} alt="collapse top icon" />
+  //     )}
+  //   </div>
+  // );
+
   const locatingMessage = (
     <div className="locating_message">
       <span className="typography-bold typography-h4">定位中</span>
@@ -115,10 +121,10 @@ export default function MapInfo({
       {isLocatingUser ? locatingMessage : null}
       {/* {locatingMessage} */}
 
-      <div className={`results_list ${expandResultList ? "expand" : ""}`}>
+      {/* <div className={`results_list ${expandResultList ? "expand" : ""}`}> */}
         {getLocationButton}
-        {collapseTip}
-        <div className="filter">
+        {/* {collapseTip} */}
+        {/* <div className="filter">
           <input
             className="typography-medium typography-caption"
             type="search"
@@ -133,15 +139,16 @@ export default function MapInfo({
             <img src={sortSvg} alt="sort icon" />
             排序
           </button>
-        </div>
-        <div className="results">
+        </div> */}
+        {/* <div className="results">
           <BikeResults
             keyword={keyword}
             sortMethod={sortMethod}
             bikesAvailable={bikesAvailable}
           />
-        </div>
-      </div>
+        </div> */}
+
+      {/* </div> */}
     </div>
   );
 }
