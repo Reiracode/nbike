@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/nbike/static/css/main.5fbdf601.chunk.css",
-    "main.js": "/nbike/static/js/main.d845d7dd.chunk.js",
-    "main.js.map": "/nbike/static/js/main.d845d7dd.chunk.js.map",
+    "main.css": "/nbike/static/css/main.85cab89e.chunk.css",
+    "main.js": "/nbike/static/js/main.2e182f9b.chunk.js",
+    "main.js.map": "/nbike/static/js/main.2e182f9b.chunk.js.map",
     "runtime-main.js": "/nbike/static/js/runtime-main.21531ad8.js",
     "runtime-main.js.map": "/nbike/static/js/runtime-main.21531ad8.js.map",
     "static/js/2.aadeded4.chunk.js": "/nbike/static/js/2.aadeded4.chunk.js",
     "static/js/2.aadeded4.chunk.js.map": "/nbike/static/js/2.aadeded4.chunk.js.map",
     "index.html": "/nbike/index.html",
-    "static/css/main.5fbdf601.chunk.css.map": "/nbike/static/css/main.5fbdf601.chunk.css.map",
+    "static/css/main.85cab89e.chunk.css.map": "/nbike/static/css/main.85cab89e.chunk.css.map",
     "static/js/2.aadeded4.chunk.js.LICENSE.txt": "/nbike/static/js/2.aadeded4.chunk.js.LICENSE.txt",
-    "static/media/icon-bicycle-400.39345ce0.svg": "/nbike/static/media/icon-bicycle-400.39345ce0.svg",
     "static/media/icon-bicycle-grey.7b8cb6aa.svg": "/nbike/static/media/icon-bicycle-grey.7b8cb6aa.svg",
     "static/media/icon-bicycle-white.0cdc8c9e.svg": "/nbike/static/media/icon-bicycle-white.0cdc8c9e.svg",
-    "static/media/main.css": "/nbike/static/media/icon-search.23e53595.svg",
+    "static/media/icon-bicycle.39345ce0.svg": "/nbike/static/media/icon-bicycle.39345ce0.svg",
+    "static/media/main.css": "/nbike/static/media/icon-bike-marker-purple.3b18ae3f.svg",
     "static/media/icon-geolocation.7783d3dc.svg": "/nbike/static/media/icon-geolocation.7783d3dc.svg",
     "static/media/icon-parking-grey.84ff3ab7.svg": "/nbike/static/media/icon-parking-grey.84ff3ab7.svg",
     "static/media/icon-parking-white.95eab66a.svg": "/nbike/static/media/icon-parking-white.95eab66a.svg",
     "static/media/icon-parking.d41d0ee4.svg": "/nbike/static/media/icon-parking.d41d0ee4.svg",
     "static/media/icon-user-position-mobile.4af8babd.svg": "/nbike/static/media/icon-user-position-mobile.4af8babd.svg",
-    "static/media/logo-light.df6e8fa0.svg": "/nbike/static/media/logo-light.df6e8fa0.svg"
+    "static/media/logo-light.aeb9d168.svg": "/nbike/static/media/logo-light.aeb9d168.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.21531ad8.js",
     "static/js/2.aadeded4.chunk.js",
-    "static/css/main.5fbdf601.chunk.css",
-    "static/js/main.d845d7dd.chunk.js"
+    "static/css/main.85cab89e.chunk.css",
+    "static/js/main.2e182f9b.chunk.js"
   ]
 }
