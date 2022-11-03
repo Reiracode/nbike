@@ -1,19 +1,11 @@
-// import collapseTopSvg from "../assets/icon-collapse-top.svg";
-// import collapseDownSvg from "../assets/icon-collapse-down.svg";
-// import sortSvg from "../assets/icon-sort.svg";
-
 import geolocactionSvg from "../assets/icon-geolocation.svg";
 
-import bicycle400Svg from "../assets/icon-bicycle-400.svg";
+import bicycleSvg from "../assets/icon-bicycle.svg";
 import bicycleWhiteSvg from "../assets/icon-bicycle-white.svg";
 
 import parkingSvg from "../assets/icon-parking.svg";
 import parkingWhiteSvg from "../assets/icon-parking-white.svg";
 
-import logoSvg from "../assets/logo-light.svg";
-
-import { useState } from "react";
- 
 
 export default function MapInfo({
   handleLocateUser,
@@ -22,31 +14,6 @@ export default function MapInfo({
   handleFindingType,
   isFindingBikes,
 }) {
-  // const [expandResultList, setExpandResultList] = useState(false);
-  // const [keyword, setKeyword] = useState("");
-  // const [sortMethod, setSortMethod] = useState(0);
-
-  // function handleSortResults() {
-  //   setSortMethod((state) => ++state % 4);
-  // }
-
-  // function handleExpandResultList() {
-  //   setExpandResultList((isExpanded) => !isExpanded);
-  // }
-
-  // function handleSetKeyword(e) {
-  //   setKeyword(e.target.value);
-  // }
-
-  // const collapseTip = (
-  //   <div className="collapse" onClick={handleExpandResultList}>
-  //     {expandResultList ? (
-  //       <img src={collapseDownSvg} alt="collapse down icon" />
-  //     ) : (
-  //       <img src={collapseTopSvg} alt="collapse top icon" />
-  //     )}
-  //   </div>
-  // );
 
   const locatingMessage = (
     <div className="locating_message">
@@ -86,7 +53,7 @@ export default function MapInfo({
               {isFindingBikes ? (
                 <img src={bicycleWhiteSvg} alt="bicycle white icon" />
               ) : (
-                <img src={bicycle400Svg} alt="bicycle white icon" />
+                <img src={bicycleSvg} alt="bicycle white icon" />
               )}
             </div>
             找單車
@@ -119,36 +86,9 @@ export default function MapInfo({
         </label>
       </div>
       {isLocatingUser ? locatingMessage : null}
-      {/* {locatingMessage} */}
-
-      {/* <div className={`results_list ${expandResultList ? "expand" : ""}`}> */}
-        {getLocationButton}
-        {/* {collapseTip} */}
-        {/* <div className="filter">
-          <input
-            className="typography-medium typography-caption"
-            type="search"
-            placeholder="搜尋站點或鄰近地點"
-            value={keyword}
-            onChange={handleSetKeyword}
-          />
-          <button
-            className="sort typography-bold typography-caption"
-            onClick={handleSortResults}
-          >
-            <img src={sortSvg} alt="sort icon" />
-            排序
-          </button>
-        </div> */}
-        {/* <div className="results">
-          <BikeResults
-            keyword={keyword}
-            sortMethod={sortMethod}
-            bikesAvailable={bikesAvailable}
-          />
-        </div> */}
-
-      {/* </div> */}
+    
+      {getLocationButton}
+        
     </div>
   );
 }

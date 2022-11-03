@@ -1,13 +1,3 @@
-
-
-import parkingSvg from "../assets/icon-parking.svg";
-import parkingRedSvg from "../assets/icon-parking-red.svg";
-import parkingGreySvg from "../assets/icon-parking-grey.svg";
-
-import bicycle500Svg from "../assets/icon-bicycle-500.svg";
-import bicycleRedSvg from "../assets/icon-bicycle-red.svg";
-import bicycleGreySvg from "../assets/icon-bicycle-grey.svg";
-
 import filterNoResults from "./filterNoResults";
 import decideByAvailability from "../utils/decideByAvailability";
 
@@ -69,19 +59,6 @@ export default function BikeResults({ bikesAvailable, keyword, sortMethod }) {
         resultNormal: "",
       });
 
-      const availableBikesImg = decideByAvailability({
-        source: station.availableRentBikes,
-        resultNone: <img src={bicycleGreySvg} alt="bicycle icon" />,
-        resultFew: <img src={bicycleRedSvg} alt="bicycle icon" />,
-        resultNormal: <img src={bicycle500Svg} alt="bicycle icon" />,
-      });
-
-      const availableParksImg = decideByAvailability({
-        source: station.availableReturnBikes,
-        resultNone: <img src={parkingGreySvg} alt="parking icon" />,
-        resultFew: <img src={parkingRedSvg} alt="parking icon" />,
-        resultNormal: <img src={parkingSvg} alt="parking icon" />,
-      });
 
       const updateTime = /.*T(\d*:\d*)/g.exec(station.srcUpdateTime)[1];
       const stationName = /(YouBike)?(.*)/g.exec(station.stationName)[2];
@@ -104,26 +81,8 @@ export default function BikeResults({ bikesAvailable, keyword, sortMethod }) {
               {`${updateTime} 更新`}
             </span>
           </div>
-          <div className="available">
-            <div className={`available_bikes ${availableBikesStyle}`}>
-              {availableBikesImg}
-              <span className="typography-medium typography-button">
-                可租借
-              </span>
-              <span className="quantity typography-bold typography-h5">
-                {station.availableRentBikes}
-              </span>
-            </div>
-            <div className={`available_parks ${availableParksStyle}`}>
-              {availableParksImg}
-              <span className="typography-medium typography-button">
-                可停車
-              </span>
-              <span className="quantity typography-bold typography-h5">
-                {station.availableReturnBikes}
-              </span>
-            </div>
-          </div>
+ 
+
         </div>
       );
     });

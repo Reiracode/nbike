@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from "react";
 import asyncGetGeolocation from "../utils/getGeolocation";
 import { getAvailableBikes } from "../utils/fetchTdxApi";
 import BikeMap from "../components/bikeMap";
-import MapInfo from "../components/mapInfo";
 
 function Main() {
   function handleFindingType() {
@@ -58,10 +57,6 @@ function Main() {
   // }, [fetchData]);
 
 
-
- 
-
-
   //  方式4  -------   OK callback //   //   //   //
   // async function getPosts() {
   //   const data = await asyncGetGeolocation();
@@ -71,7 +66,7 @@ function Main() {
 
   const getPosition = useCallback(async () => {
     const data = await asyncGetGeolocation();
-    // alert("yourlocation" + data)
+    console.log("yourlocation" + data)
     setUserPosition(data);
 
     const bikes = await getAvailableBikes(data);
@@ -84,17 +79,8 @@ function Main() {
     getPosition()
   }, [getPosition]);
 
-
-
-  
  
     //   //   //   //   //   //   //   // 
-  
-  
-
-
-
-
   const locatingMessage = (
     <div className="overlay">
       <span className="typography-bold typography-h4">定位中</span>
@@ -103,28 +89,13 @@ function Main() {
 
   return (
     <main>
-      {/* {isLocatingUser ? locatingMessage : null} */}
-      {/* {!userPosition ? locatingMessage
-        :  
-          <BikeMap
-            userPosition={userPosition}
-            bikesAvailable={bikesAvailable}
-            isFindingBikes={isFindingBikes}
-            handleLocateUser={getPosition}
-            // handleLocateUser={getLocation} 
-            isLocatingUser={isLocatingUser}
-            handleFindingType={handleFindingType}
-          />
-      } */}
- 
-    
+      {isLocatingUser ? locatingMessage : null}
       {userPosition &&
         <BikeMap
           userPosition={userPosition}
           bikesAvailable={bikesAvailable}
           isFindingBikes={isFindingBikes}
           handleLocateUser={getPosition}
-          // handleLocateUser={getLocation} 
           isLocatingUser={isLocatingUser}
           handleFindingType={handleFindingType}
         />

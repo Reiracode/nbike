@@ -1,17 +1,18 @@
-import bicycleGreySvg from "../assets/icon-bicycle-grey.svg";
-import parkingSvg from "../assets/icon-parking.svg";
-
-import parkingGreySvg from "../assets/icon-parking-grey.svg";
 import userPositionMobileSvg from "../assets/icon-user-position-mobile.svg";
 import geolocactionSvg from "../assets/icon-geolocation.svg";
 
-import bicycle400Svg from "../assets/icon-bicycle-400.svg";
+import bicycleSvg from "../assets/icon-bicycle.svg";
+import bicycleGreySvg from "../assets/icon-bicycle-grey.svg";
 import bicycleWhiteSvg from "../assets/icon-bicycle-white.svg";
+
+import parkingSvg from "../assets/icon-parking.svg";
+import parkingGreySvg from "../assets/icon-parking-grey.svg";
 import parkingWhiteSvg from "../assets/icon-parking-white.svg";
 
 import { useEffect, useRef } from "react";
 import decideByAvailability from "../utils/decideByAvailability";
 import L from "leaflet";
+
 
 export default function BikeMap({
   userPosition,
@@ -33,13 +34,13 @@ export default function BikeMap({
       className="geolocation"
       disabled={isLocatingUser ? true : false}
       onClick={handleLocateUser}>
-      <img src={geolocactionSvg} alt="geo location icon" />
+      <img src={geolocactionSvg} alt="geolocation icon" />
     </button>
   );
 
   //   create map
   useEffect(() => {
-    // if (bikeMapRef.current) return;
+    if (bikeMapRef.current) return;
     bikeMapRef.current = L.map("bike_map", {
       attributionControl: false,
       zoomControl: false,
@@ -189,7 +190,7 @@ export default function BikeMap({
             {isFindingBikes ? (
               <img src={bicycleWhiteSvg} alt="bicycle white icon" />
             ) : (
-              <img src={bicycle400Svg} alt="bicycle white icon" />
+              <img src={bicycleSvg} alt="bicycle white icon" />
             )}
           </div>
           找單車
