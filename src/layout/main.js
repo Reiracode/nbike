@@ -3,15 +3,18 @@ import { useState, useEffect, useCallback } from "react";
 import asyncGetGeolocation from "../utils/getGeolocation";
 import { getAvailableBikes } from "../utils/fetchTdxApi";
 import BikeMap from "../components/bikeMap";
+// import BikeMap from "../components/bikeMap3";
 
 function Main() {
   function handleFindingType() {
     setIsFindingBikes((bool) => !bool);
   }
 
-  // const TAIPEI_COORDINATES = [35.4122, 139.4130];
-  // const [userPosition, setUserPosition] = useState(TAIPEI_COORDINATES);
-  const [userPosition, setUserPosition] = useState(false);
+  const TAIPEI_COORDINATES = [35.4122, 139.4130];
+  const [userPosition, setUserPosition] = useState(TAIPEI_COORDINATES);
+  // const [userPosition, setUserPosition] = useState(false);
+
+
   const [bikesAvailable, setBikesAvailable] = useState([]);
   // const [isLocatingUser, setIsLocatingUser] = useState(false);
   const [isLocatingUser, setIsLocatingUser] = useState(true);
@@ -89,6 +92,7 @@ function Main() {
 
   return (
     <main>
+      {/* {locatingMessage} */}
       {isLocatingUser ? locatingMessage : null}
       {userPosition &&
         <BikeMap

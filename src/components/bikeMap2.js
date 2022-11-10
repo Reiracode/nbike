@@ -22,8 +22,11 @@ export default function BikeMap({
   handleLocateUser,
   handleFindingType,
 }) {
+  // console.log(userPosition)
+  // const bikeMapRef = useRef(null);
+
   // create map
-  const bikeMapRef = useRef(null);
+  const bikebikeMapRef = useRef(null);
 
   // add marker
   const userPositionMarkerRef = useRef(null);
@@ -39,58 +42,133 @@ export default function BikeMap({
     </button>
   );
 
-  useEffect(() => {
-    console.log(bikeMapRef.current)
-    if (bikeMapRef.current) return;
+ 
 
+  // create map
+  const bikeMapRef = useRef(null);
+  useEffect(() => {
     bikeMapRef.current = L.map("bike_map", {
-      // attributionControl: false,
-      // zoomControl: false,
       center: userPosition,
-      zoom: 15,
+      zoom: 16,
       layers: [
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
           attribution:
-            '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
       ]
     });
+  }, []);
 
-  }, [userPosition]);
-
-  //  setView
+  // add layer
+  const layerRef = useRef(null);
   useEffect(() => {
-    //no map
-    // if (!bikeMapRef.current) return;
-    // create your position icon
+    layerRef.current = L.layerGroup().addTo(bikeMapRef.current);
+  }, []);
+
+  // update markers
+  useEffect(() => {
+    let bikeMarkerStatusStyle_bikes, bikeMarkerStatusStyle_parks;
+
+    layerRef.current.clearLayers();
+    bikeMapRef.current.setView(userPosition, 15);
+   
+    // add marker
+    // userPositionMarkerRef.current.addTo(bikeMapRef.current);
+
     const userPositionIcon = L.icon({
       iconUrl: userPositionMobileSvg,
       iconSize: [36, 36]
     });
-
-    // remove current user marker
-    if (userPositionMarkerRef.current)
-      bikeMapRef.current.removeLayer(userPositionMarkerRef.current);
-    bikeMapRef.current.setView(userPosition, 15);
-
     //  create marker
+    // userPositionMarkerRef.current = L.marker(userPosition, {
+    //   icon: userPositionIcon,
+    // });
+
     userPositionMarkerRef.current = L.marker(userPosition, {
       icon: userPositionIcon,
-    });
-    // add marker
-    userPositionMarkerRef.current.addTo(bikeMapRef.current);
-  }, [userPosition]);
+    }).addTo(bikeMapRef.current);
+    
+    
+    // bikesAvailable.forEach(marker => {
+ 
 
+      bikesAvailable.forEach((station, index) => {
+        const bikeversion = station.stationName.includes("2.0") ? "plus" : ""
+
+        //bikes ==  for rent
+        //  none/few/""
+        //L.marker resultNormal 
+        // bikeMarkerStatusStyle_bikes = decideByAvailability(station.availableRentBikes);
+        bikeMarkerStatusStyle_bikes = decideByAvailability(station.availableRentBikes) + " " + bikeversion;
+        bikeMarkerStatusStyle_parks = decideByAvailability(station.availableReturnBikes) + " " + bikeversion;
+
+        // }
+        // popup  none/few/" "
+        const availableBikesStyle = decideByAvailability(station.availableRentBikes) + " " + bikeversion;
+        const availableParksStyle = decideByAvailability(station.availableReturnBikes) + " " + bikeversion;
+        const availableBikesImg = `<img src=${bicycleGreySvg} alt="bicycle icon" />`;
+        const availableParksImg = `<img src=${parkingGreySvg} alt="parking icon" />`
+
+        //L marker的資料
+        bikeMarkersRef.current[index] = L.marker(
+          [station.stationPosition.lat, station.stationPosition.lng],
+          {
+            icon: L.divIcon({
+              className: `bikeMarker ${isFindingBikes
+                ? bikeMarkerStatusStyle_bikes
+                : bikeMarkerStatusStyle_parks
+                }`,
+              html: `<span class="bikeMarker_number typography-bold typography-button">
+            ${isFindingBikes
+                  ? station.availableRentBikes
+                  : station.availableReturnBikes
+                }</span>`
+            }),
+          }
+        );
+
+        const updateTime = /.*T(\d*:\d*)/g.exec(station.srcUpdateTime)[1];
+
+        // bind popup to markers?
+        const popupHtml = `<div class="bikeMarkers_popup">
+          <h3 class="typography-bold typography-button">${station.stationName}</h3>
+          <div class="popup_info">
+              <div class="popup_bikes ${availableBikesStyle}">
+                  ${availableBikesImg}
+                  <span class="quantity typography-bold typography-button">${station.availableRentBikes}</span>
+              </div>
+              <div class="popup_parks ${availableParksStyle}">
+                  ${availableParksImg}
+                  <span class="quantity typography-bold typography-button">${station.availableReturnBikes}</span>
+              </div>
+              <span class="update_time typography-medium typography-caption">${updateTime}更新</span>
+          </div>
+        </div>`;
+
+        bikeMarkersRef.current[index].bindPopup(popupHtml, {
+          className: "popupClass",
+        });
+
+        // bikesRef.current[index] add to map
+        bikeMarkersRef.current[index].addTo(bikeMapRef.current);
+
+      });
+
+
+
+    },
+    [bikesAvailable, userPosition, isFindingBikes]
+  );
 
 
   //setting bikeMarkers
   useEffect(() => {
-    if (!bikeMapRef.current) return; //no map
+    if (!bikebikeMapRef.current) return; //no map
 
     //remove previous bike markers
     bikeMarkersRef.current.forEach((bikeMarker) => {
       // map remove bikeMarker
-      bikeMapRef.current.removeLayer(bikeMarker);
+      bikebikeMapRef.current.removeLayer(bikeMarker);
     });
 
     bikeMarkersRef.current = [];
@@ -154,11 +232,13 @@ export default function BikeMap({
       });
 
       // bikesRef.current[index] add to map
-      bikeMarkersRef.current[index].addTo(bikeMapRef.current);
+      bikeMarkersRef.current[index].addTo(bikebikeMapRef.current);
 
     });
   }, [bikesAvailable, isFindingBikes]);
-
+ 
+ 
+  
   return userPosition ? <div id="bike_map">
     <div className="find_type_wrapper">
       <label htmlFor="find_bikes">

@@ -12,7 +12,7 @@ import parkingWhiteSvg from "../assets/icon-parking-white.svg";
 import { useEffect, useRef } from "react";
 import decideByAvailability from "../utils/decideByAvailability";
 import L from "leaflet";
-// https://cherniavskii.com/using-leaflet-in-react-apps-with-react-hooks/
+
 
 export default function BikeMap({
   userPosition,
@@ -22,10 +22,9 @@ export default function BikeMap({
   handleLocateUser,
   handleFindingType,
 }) {
-  // create map
-  const bikeMapRef = useRef(null);
+  // console.log(userPosition)
 
-  // add marker
+  const bikeMapRef = useRef(null);
   const userPositionMarkerRef = useRef(null);
   const bikeMarkersRef = useRef([]);
 
@@ -39,44 +38,47 @@ export default function BikeMap({
     </button>
   );
 
+  //   create map
   useEffect(() => {
     console.log(bikeMapRef.current)
     if (bikeMapRef.current) return;
 
     bikeMapRef.current = L.map("bike_map", {
-      // attributionControl: false,
-      // zoomControl: false,
+      attributionControl: false,
+      zoomControl: false,
       center: userPosition,
       zoom: 15,
       layers: [
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           attribution:
             '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        })
-      ]
+        }),
+      ],
     });
-
   }, [userPosition]);
+
+
 
   //  setView
   useEffect(() => {
-    //no map
-    // if (!bikeMapRef.current) return;
-    // create your position icon
-    const userPositionIcon = L.icon({
-      iconUrl: userPositionMobileSvg,
-      iconSize: [36, 36]
-    });
+    if (!bikeMapRef.current) return; //no map
 
     // remove current user marker
     if (userPositionMarkerRef.current)
       bikeMapRef.current.removeLayer(userPositionMarkerRef.current);
     bikeMapRef.current.setView(userPosition, 15);
 
-    //  create marker
+    // create your position icon
+    const userPositionIcon = L.icon({
+      iconUrl: userPositionMobileSvg,
+      iconSize: [36, 36]
+    });
+
+    // create marker
     userPositionMarkerRef.current = L.marker(userPosition, {
       icon: userPositionIcon,
     });
+
     // add marker
     userPositionMarkerRef.current.addTo(bikeMapRef.current);
   }, [userPosition]);
@@ -155,10 +157,22 @@ export default function BikeMap({
 
       // bikesRef.current[index] add to map
       bikeMarkersRef.current[index].addTo(bikeMapRef.current);
-
     });
   }, [bikesAvailable, isFindingBikes]);
 
+  // clear map unmount
+  // useEffect(() => {
+  //   console.log("clearmap")
+  //   return function clearMap() { 
+  //     if (bikeMapRef.current) {
+  //       bikeMapRef.current.remove();
+  //       bikeMapRef.current = null;
+  //     }
+  //   };
+  // }, []);
+
+  // return <div id="bike_map"></div>;
+  
   return userPosition ? <div id="bike_map">
     <div className="find_type_wrapper">
       <label htmlFor="find_bikes">
